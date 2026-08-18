@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Animation Updates
-        anim.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
+        anim.SetFloat("Speed", Mathf.Abs(rb.linearVelocity.x));
         anim.SetBool("Grounded", isGrounded);
 
         // Handle Jumping
@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         // Movement
-        rb.velocity = new Vector2(moveInput.x * moveSpeed, rb.velocity.y);
+        rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
     }
 
     private void ConfigureInputScheme()
@@ -124,7 +124,7 @@ public class PlayerController : MonoBehaviour
     public void Respawn()
     {
         transform.position = respawnPoint.position;
-        rb.velocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
         isGrounded = false;
         anim.SetFloat("Speed", 0);
         anim.SetBool("Grounded", false);
@@ -144,7 +144,7 @@ public class PlayerController : MonoBehaviour
     private void Jump()
     {
         // Aplicar una fuerza de salto
-        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         jumpPressed = false;  // Restablecer la variable de salto
     }
 }
