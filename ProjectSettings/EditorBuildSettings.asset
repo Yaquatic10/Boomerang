@@ -5,19 +5,22 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/OldScenes/MainMenu.unity
     guid: 3fc7a25bf817e9a46875c6e63caf548d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/OldScenes/Map selector.unity
     guid: a549163a5140c0a4b89041be6f91050b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/OldScenes/Map1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/OldScenes/Mapa2.unity
     guid: 64542cb06f9b6234db5d5c698ba70d55
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/OldScenes/Map3.unity
     guid: 7e0b242ba7fcdf94280450cbbf1d7ca9
+  - enabled: 1
+    path: Assets/Scenes/TestLevels/CharCtrl_Test.unity
+    guid: 5ab207e91e44eee478a0828285974ea7
   m_configObjects: {}

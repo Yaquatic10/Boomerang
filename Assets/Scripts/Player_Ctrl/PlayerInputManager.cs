@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PlayerInputManager : MonoBehaviour
 {
@@ -21,44 +20,6 @@ public class PlayerInputManager : MonoBehaviour
     void Update()
     {
         if (Keyboard.current == null) return;
-
-
-        /*if (!p1Joined && Keyboard.current.spaceKey.wasPressedThisFrame)
-        {
-            var player1 = PlayerInput.Instantiate(playerPrefab, controlScheme: "1PKeyboard", pairWithDevice: Keyboard.current);
-
-            player1.transform.position = spawnPointA.transform.position;
-            p1Joined = true;
-        }
-
-        if (!p2Joined && Keyboard.current.rightShiftKey.wasPressedThisFrame)
-        {
-            var player2 = PlayerInput.Instantiate(playerPrefab, controlScheme: "2PKeyboard", pairWithDevice: Keyboard.current);
-
-            player2.transform.position = spawnPointB.transform.position;
-            p2Joined = true;
-        }
-
-        foreach (var gamePad in Gamepad.all)
-        {
-            if (!p1Joined && gamePad.buttonSouth.wasPressedThisFrame)
-            {
-                var player1 = PlayerInput.Instantiate(playerPrefab, controlScheme: "1PGamepad", pairWithDevice: Gamepad.current);
-                player1.transform.position = spawnPointA.transform.position;
-                p1Joined = true;
-                p1Gamepad = gamePad;
-                return;
-            }
-
-            if (!p2Joined && gamePad.buttonSouth.wasPressedThisFrame && gamePad != p1Gamepad)
-            {
-                var player2 = PlayerInput.Instantiate(playerPrefab, controlScheme: "2PGamepad", pairWithDevice: Gamepad.current);
-                player2.transform.position = spawnPointB.transform.position;
-                p2Joined = true;
-                p2Gamepad = gamePad;
-                return;
-            }
-        }*/
 
         if (!p1Joined)
         {

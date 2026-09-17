@@ -47,6 +47,7 @@ public abstract class PlayerBaseState
         if (_isRootState)
         {
             //Switch Current State of context.
+            newState.EnterState();
             _ctx.CurrentState = newState;
         }
         else if (_currentSuperState != null)
@@ -64,5 +65,7 @@ public abstract class PlayerBaseState
     {
         _currentSubState = newSubState;
         newSubState.SetSuperState(this);
+
+        newSubState.EnterState();
     }
 }

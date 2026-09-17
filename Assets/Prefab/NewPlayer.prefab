@@ -139,7 +139,19 @@ MonoBehaviour:
     m_ActionId: be21711f-3f43-463e-b539-148ba0172db9
     m_ActionName: 'Gameplay/1kMove[/Keyboard/a,/Keyboard/d]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3958734003373211914}
+        m_TargetAssemblyTypeName: PlayerStateMachine, Assembly-CSharp
+        m_MethodName: onJumpInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: a29a3871-c793-40ac-99ec-2c46bf2e8f14
     m_ActionName: 'Gameplay/1kJump[/Keyboard/w]'
   - m_PersistentCalls:
@@ -167,7 +179,19 @@ MonoBehaviour:
     m_ActionId: 30039938-cb9e-4e43-9b20-5c318f40d39e
     m_ActionName: 'Gameplay/2kMove[/Keyboard/leftArrow,/Keyboard/rightArrow]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3958734003373211914}
+        m_TargetAssemblyTypeName: PlayerStateMachine, Assembly-CSharp
+        m_MethodName: onJumpInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: aff952a9-0008-45b1-b987-891027c619c0
     m_ActionName: 'Gameplay/2kJump[/Keyboard/upArrow]'
   - m_PersistentCalls:
@@ -199,17 +223,17 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 0a2a03a078265c14e9ffd0abc069346e, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!61 &3329942853744934586
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -272,9 +296,13 @@ MonoBehaviour:
   groundCheckRadius: 0.2
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
-  moveSpeed: 5
-  jumpForce: 10
+    m_Bits: 64
+  _moveSpeed: 6
+  _jumpHeight: 5
+  _maxJumpTime: 0.1
+  _gravityScale: 5
+  _fallingGravityScale: 6
+  _jumpForce: 15
 --- !u!1 &3899702511623354651
 GameObject:
   m_ObjectHideFlags: 0
