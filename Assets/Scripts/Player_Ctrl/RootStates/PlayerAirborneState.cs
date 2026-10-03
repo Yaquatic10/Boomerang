@@ -18,10 +18,10 @@ public class PlayerAirbornState : PlayerBaseState
     public override void UpdateState()
     {
         Ctx.IsGrounded = Physics2D.OverlapCircle(Ctx.GroundCheckPoint.position, Ctx.GroundCheckRadius, Ctx.GroundLayer);   //Comprobación de contacto con el suelo.
-        
+
         //Esta variante del código permite controlar el salto con una altura establecida de forma precisa sin importar la masa y gravedad.
         //Ctx.JumpForce = Mathf.Sqrt(Ctx.JumpHeight * -3 * (Physics.gravity.y * Ctx.GravityScale));
-        Ctx.RbChar.AddForce(Physics.gravity * (Ctx.CurrentGravityScale - 1) * Ctx.RbChar.mass); //Aplicación de gravedad dinamica.
+        Ctx.RbChar.AddForce(Physics.gravity * (Ctx.CurrentGravityScale - 1)); //Aplicación de gravedad dinamica.
         
         Ctx.AppliedMovementX = Ctx.MovementInput.x * Ctx.MoveSpeed * Ctx.CurrentMoveMultiplier;
         if (Ctx.MovementInput.x != 0)
@@ -40,7 +40,7 @@ public class PlayerAirbornState : PlayerBaseState
     {
         if (Ctx.IsGrounded && !Ctx.IsJumping)
         {
-            Debug.Log("Tocó suelo");
+            //Debug.Log("Tocó suelo");
             SwitchState(Factory.Grounded());
         }
     }

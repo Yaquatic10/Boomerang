@@ -298,10 +298,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _moveSpeed: 6
-  _jumpHeight: 5
-  _maxJumpTime: 0.1
-  _gravityScale: 5
-  _fallingGravityScale: 6
+  _jumpHeight: 10
+  _maxJumpTime: 0
+  _gravityScale: 1
+  _fallingGravityScale: 2
   _jumpForce: 15
 --- !u!1 &3899702511623354651
 GameObject:

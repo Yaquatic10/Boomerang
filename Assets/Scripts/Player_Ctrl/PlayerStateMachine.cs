@@ -35,7 +35,14 @@ public class PlayerStateMachine : MonoBehaviour
     public float _maxJumpTime = 0.5f;
     public float _gravityScale = 5f;
     public float _fallingGravityScale = 8f;
-    public float _jumpForce = 15f;
+    public float _jumpForce;
+
+    //TEST DE NUEVO JUMP
+    float _tiempoBaseAlVertice = 0.5f;
+    float _tiempoAlVertice;
+    float _gravedadNecesaria;
+    float _gravedadBase;
+
 
     float _jumpTimeCounter;
     float _currentGravityScale;
@@ -60,12 +67,18 @@ public class PlayerStateMachine : MonoBehaviour
     public float AppliedMovementY {  get { return _appliedMovementY; } set { _appliedMovementY = value; } }
     public float MoveSpeed {  get { return _moveSpeed; } }
     public float JumpHeight {  get { return _jumpHeight; } }
-    public float JumpForce { get { return _jumpForce; } }
+    public float JumpForce { get { return _jumpForce; } set { _jumpForce = value; } }
     public float GravityScale { get { return _gravityScale; } }
     public float FallingGravityScale {  get { return _fallingGravityScale; } }
     public float CurrentGravityScale {  get { return _currentGravityScale; } set { _currentGravityScale = value; } }
     public float MaxJumpTime {  get { return _maxJumpTime; } set { _maxJumpTime = value; } }
     public float JumpTimeCounter {  get { return _jumpTimeCounter; } set { _jumpTimeCounter = value; } }
+
+    //TEST NUEVO SALOT
+    public float TiempoBaseAlVertice {  get { return _tiempoBaseAlVertice; } }
+    public float TiempoAlVertice {  get { return _tiempoAlVertice; } set { _tiempoAlVertice = value; } }
+    public float GravedadNecesaria {  get { return _gravedadNecesaria; } set { _gravedadNecesaria = value; } }
+    public float GravedadBase {  get { return _gravedadBase; } }
 
     //GETTERS DE REGISTRO DE INPUTS.
     public bool IsMovementPressed {  get { return _isMovementPressed; } set { _isMovementPressed = value; } }

@@ -9,11 +9,12 @@ public class PlayerFallState : PlayerBaseState
     {
         Debug.Log("FALL STATE");
         Ctx.CurrentGravityScale = Ctx.FallingGravityScale;    //Descomentar si se usa salto preciso por altura.
+        
     }
 
     public override void UpdateState()
     {
-        Ctx.RbChar.linearVelocity += Vector2.up * Physics.gravity.y * (Ctx.CurrentGravityScale - 1) * Time.deltaTime;
+        //Ctx.RbChar.linearVelocity += Vector2.up * Physics.gravity.y * (Ctx.CurrentGravityScale - 1) * Time.deltaTime;
 
         CheckSwitchStates();
     }
