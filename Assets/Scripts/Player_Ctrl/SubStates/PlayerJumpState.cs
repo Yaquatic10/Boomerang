@@ -8,12 +8,11 @@ public class PlayerJumpState : PlayerBaseState
     public override void EnterState()
     {
         //Set active JUMP Animation.
-        Ctx.IsJumping = true;
-        Debug.Log("JUMP STATE");
+        
         /*Ctx.CurrentGravityScale = Ctx.GravityScale; //Descomentar si se usa salto preciso por altura.
         Ctx.RbChar.linearVelocity = new Vector2(Ctx.RbChar.linearVelocity.x, Ctx.JumpForce);
         Ctx.JumpTimeCounter = Ctx.MaxJumpTime;*/
-
+        
         Ctx.TiempoAlVertice = Ctx.TiempoBaseAlVertice * Ctx.RbChar.mass;
         Ctx.GravedadNecesaria = (2f * Ctx.JumpHeight) / Mathf.Pow(Ctx.TiempoAlVertice, 2);
         Ctx.CurrentGravityScale = 0;

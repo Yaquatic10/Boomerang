@@ -6,23 +6,19 @@ public class PlayerAirbornState : PlayerBaseState
         : base(currentContext, playerStateFactory)
     {
         IsRootState = true;
-        
     }
 
     public override void EnterState()
     {
-        Debug.Log("AIRBORN STATE");
         InitializeSubState();
     }
 
     public override void UpdateState()
     {
+        Ctx.IsHookedRgt = Physics2D.OverlapCircle(Ctx.WallCheckPointRgt.position, Ctx.WallCheckRadius, Ctx.WallLayer); //Comprobación de contacto con paredes.
+        Ctx.IsHookedLft = Physics2D.OverlapCircle(Ctx.WallCheckPointLft.position, Ctx.WallCheckRadius, Ctx.WallLayer); //Comprobación de contacto con paredes.
         Ctx.IsGrounded = Physics2D.OverlapCircle(Ctx.GroundCheckPoint.position, Ctx.GroundCheckRadius, Ctx.GroundLayer);   //Comprobación de contacto con el suelo.
-
-        //Esta variante del código permite controlar el salto con una altura establecida de forma precisa sin importar la masa y gravedad.
-        //Ctx.JumpForce = Mathf.Sqrt(Ctx.JumpHeight * -3 * (Physics.gravity.y * Ctx.GravityScale));
         Ctx.RbChar.AddForce(Physics.gravity * (Ctx.CurrentGravityScale - 1)); //Aplicación de gravedad dinamica.
-        
         Ctx.AppliedMovementX = Ctx.MovementInput.x * Ctx.MoveSpeed * Ctx.CurrentMoveMultiplier;
         if (Ctx.MovementInput.x != 0)
         {
@@ -38,18 +34,25 @@ public class PlayerAirbornState : PlayerBaseState
 
     public override void CheckSwitchStates()
     {
-        if (Ctx.IsGrounded && !Ctx.IsJumping)
+        if ((Ctx.IsHookedRgt || Ctx.IsHookedLft) && !Ctx.IsJumping)
         {
-            //Debug.Log("Tocó suelo");
+            SwitchState(Factory.Wallhook());
+        }
+        else if (Ctx.IsGrounded && !Ctx.IsJumping)
+        {
             SwitchState(Factory.Grounded());
         }
     }
 
     public override void InitializeSubState()
     {
-        if (Ctx.IsJumpPressed)
+        if (Ctx.IsJumpPressed && !Ctx.IsWallJumping)
         {
             SetSubState(Factory.Jump());
+        }
+        else if (Ctx.IsJumpPressed && Ctx.IsWallJumping)
+        {
+            SetSubState(Factory.WallJump());
         }
         else if (Ctx.RbChar.linearVelocity.y <= 0)
         {

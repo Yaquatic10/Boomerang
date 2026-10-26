@@ -1,11 +1,20 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PlayerInputManager : MonoBehaviour
 {
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] public GameObject spawnPointA;
     [SerializeField] public GameObject spawnPointB;
+
+    public GameObject[] _player1;
+    public GameObject[] _player2;
+
+    PlayerStateMachine _p1StateMachine;
+    PlayerStateMachine _p2StateMachine;
+
+    [SerializeField] public HealthManager _healthManager;
 
     private bool p1Joined = false;
     private bool p2Joined = false;
@@ -26,8 +35,12 @@ public class PlayerInputManager : MonoBehaviour
             if(Keyboard.current.spaceKey.wasPressedThisFrame && !wasdPaired)
             {
                 var player1 = PlayerInput.Instantiate(playerPrefab, controlScheme: "1PKeyboard", pairWithDevice: Keyboard.current);
-
                 player1.transform.position = spawnPointA.transform.position;
+
+                player1.gameObject.tag = "Player1";
+                player1.GetComponent<PlayerStateMachine>().SelfRecognitionAsP1();
+                _healthManager.Player1Initialize();
+
                 p1Joined = true;
                 wasdPaired = true;
                 return;
@@ -36,8 +49,12 @@ public class PlayerInputManager : MonoBehaviour
             if(Keyboard.current.rightShiftKey.wasPressedThisFrame && !arrowsPaired)
             {
                 var player1 = PlayerInput.Instantiate(playerPrefab, controlScheme: "2PKeyboard", pairWithDevice: Keyboard.current);
-
                 player1.transform.position = spawnPointA.transform.position;
+
+                player1.gameObject.tag = "Player1";
+                player1.GetComponent<PlayerStateMachine>().SelfRecognitionAsP1();
+                _healthManager.Player1Initialize();
+
                 p1Joined = true;
                 arrowsPaired = true;
                 return;
@@ -50,6 +67,11 @@ public class PlayerInputManager : MonoBehaviour
             {
                 var player2 = PlayerInput.Instantiate(playerPrefab, controlScheme: "1PKeyboard", pairWithDevice: Keyboard.current);
                 player2.transform.position = spawnPointB.transform.position;
+
+                player2.gameObject.tag = "Player2";
+                player2.GetComponent<PlayerStateMachine>().SelfRecognitionAsP2();
+                _healthManager.Player2Initialize();
+
                 p2Joined = true;
                 wasdPaired = true;
                 return;
@@ -58,8 +80,12 @@ public class PlayerInputManager : MonoBehaviour
             if (Keyboard.current.rightShiftKey.wasPressedThisFrame && !arrowsPaired)
             {
                 var player2 = PlayerInput.Instantiate(playerPrefab, controlScheme: "2PKeyboard", pairWithDevice: Keyboard.current);
-
                 player2.transform.position = spawnPointB.transform.position;
+
+                player2.gameObject.tag = "Player2";
+                player2.GetComponent<PlayerStateMachine>().SelfRecognitionAsP2();
+                _healthManager.Player2Initialize();
+
                 p2Joined = true;
                 arrowsPaired = true;
                 return;
@@ -72,6 +98,11 @@ public class PlayerInputManager : MonoBehaviour
             {
                 var player1 = PlayerInput.Instantiate(playerPrefab, controlScheme: "1PGamepad", pairWithDevice: Gamepad.current);
                 player1.transform.position = spawnPointA.transform.position;
+
+                player1.gameObject.tag = "Player2";
+                player1.GetComponent<PlayerStateMachine>().SelfRecognitionAsP1();
+                _healthManager.Player1Initialize();
+
                 p1Joined = true;
                 p1Gamepad = gamePad;
                 return;
@@ -81,6 +112,11 @@ public class PlayerInputManager : MonoBehaviour
             {
                 var player2 = PlayerInput.Instantiate(playerPrefab, controlScheme: "2PGamepad", pairWithDevice: Gamepad.current);
                 player2.transform.position = spawnPointB.transform.position;
+
+                player2.gameObject.tag = "Player2";
+                player2.GetComponent<PlayerStateMachine>().SelfRecognitionAsP2();
+                _healthManager.Player2Initialize();
+
                 p2Joined = true;
                 p2Gamepad = gamePad;
                 return;

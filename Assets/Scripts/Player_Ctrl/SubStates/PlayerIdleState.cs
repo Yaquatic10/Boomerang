@@ -7,7 +7,7 @@ public class PlayerIdleState : PlayerBaseState
 
     public override void EnterState()
     {
-        //Debug.Log("IDLE STATE");
+        
     }
 
     public override void UpdateState()

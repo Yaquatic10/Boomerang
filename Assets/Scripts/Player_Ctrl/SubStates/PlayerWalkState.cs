@@ -9,17 +9,11 @@ public class PlayerWalkState : PlayerBaseState
     public override void EnterState()
     {
         //Set active Walk Animation.
-        //Debug.Log("WALK STATE");
+        Ctx.AnimCtrl.SetBool("isWalking", true);
     }
 
     public override void UpdateState()
     {
-        if (!Ctx.SpeedBuffEnabled)
-        {
-            Ctx.CurrentMoveMultiplier = 1;
-        }
-        //EXAPNDIR CONDICIONALES CON LOS DIFERENTES MODIFICADORES DE ITEMS.
-
         Ctx.AppliedMovementX = Ctx.MovementInput.x * Ctx.MoveSpeed * Ctx.CurrentMoveMultiplier;
         if (Ctx.MovementInput.x != 0)
         {
@@ -31,6 +25,7 @@ public class PlayerWalkState : PlayerBaseState
     public override void ExitState() 
     {
         //Set inactive Walk Animation
+        Ctx.AnimCtrl.SetBool("isWalking", false);
     }
 
     public override void CheckSwitchStates()

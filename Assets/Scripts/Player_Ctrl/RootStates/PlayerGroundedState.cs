@@ -11,14 +11,13 @@ public class PlayerGroundedState : PlayerBaseState
 
     public override void EnterState()
     {
-        Debug.Log("GROUNDED STATE");
         InitializeSubState();
     }
 
     public override void UpdateState()
     {
         Ctx.IsGrounded = Physics2D.OverlapCircle(Ctx.GroundCheckPoint.position, Ctx.GroundCheckRadius, Ctx.GroundLayer);   //Comprobación de contacto con el suelo.
-
+        
         CheckSwitchStates();
     }
 

@@ -24,9 +24,13 @@ public class Boomerang : MonoBehaviour
     private float currentSpeed; // Velocidad actual del boomerang
     private float lifetime; // Tiempo transcurrido desde que se creó el boomerang
 
+    public int playerOwner;
+    string _ownerTag;
+
     void Start()
     {
         player = ThrowingPlayer.transform.parent; // Referencia al jugador
+
         launchPosition = transform.position;
 
         // Determinar dirección inicial basada en la escala del jugador
@@ -75,10 +79,12 @@ public class Boomerang : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void OnTriggerEnter2D(Collider2D other)
     {
         // Verificar si el objeto que colisiona es el ThrowingPlayer
-        if (other.gameObject == ThrowingPlayer)
+        
+        
+        if (other.CompareTag(_ownerTag))
         {
             Destroy(gameObject);
         }
@@ -86,9 +92,24 @@ public class Boomerang : MonoBehaviour
 
     public void OnDestroy()
     {
-        if (ThrowingPlayer != null)
+        /*if (ThrowingPlayer != null)
         {
             ThrowingPlayer.transform.parent.gameObject.GetComponent<PlayerController>().currentBoomerang = null;
+        }*/
+    }
+
+    public void ownerRecognition(int IsPLayer)
+    {
+        playerOwner = IsPLayer;
+        if (playerOwner == 1)
+        {
+            _ownerTag = "Player1";
+            gameObject.tag = "Boomerang";
+        }
+        else if (playerOwner == 2)
+        {
+            _ownerTag = "Player2";
+            gameObject.tag = "Boomerang 2";
         }
     }
 }

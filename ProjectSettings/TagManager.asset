@@ -10,6 +10,9 @@ TagManager:
   - Point1
   - Point2
   - Death
+  - DmgTester
+  - Player1
+  - Player2
   layers:
   - Default
   - TransparentFX
@@ -18,7 +21,7 @@ TagManager:
   - Water
   - UI
   - Ground
-  - 
+  - Wall
   - 
   - 
   - 
