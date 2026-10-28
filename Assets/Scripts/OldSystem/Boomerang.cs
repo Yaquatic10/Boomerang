@@ -81,9 +81,6 @@ public class Boomerang : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        // Verificar si el objeto que colisiona es el ThrowingPlayer
-        
-        
         if (other.CompareTag(_ownerTag))
         {
             Destroy(gameObject);

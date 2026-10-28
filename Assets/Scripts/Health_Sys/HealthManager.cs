@@ -3,11 +3,8 @@ using UnityEngine.UI;
 
 public class HealthManager : MonoBehaviour
 {
-    //HEADERS.
-
     
-    
-    //
+    // ESPACIOS RESERVADOS PARA GAMEOBJECTS
     public GameObject[] _player1;
     public GameObject[] _player2;
 
@@ -19,8 +16,12 @@ public class HealthManager : MonoBehaviour
     float _totalHealth = 100;
     float _p1Health;
     float _p2Health;
+    public int _totalLives = 3; //MODIFICA PARA AJUSTAR LA DURACIÓN ESTIMADA DE CADA RONDA.
+    int _p1Lives;
+    int _p2Lives;
 
-    //Factores de daño
+
+    //VARIABLES RELACIONADOS AL SISTEMA DE DAÑO.
     string[] _dmgType = { "Boomerang", "Collision" };
 
     [Header("Factores de Daño")]
@@ -29,22 +30,25 @@ public class HealthManager : MonoBehaviour
 
     void Start()
     {
-        _p1HealthBar.value = _totalHealth;
-        _p2HealthBar.value = _totalHealth;
+        _p1HealthBar.value = 0;
+        _p2HealthBar.value = 0;
+
     }
     
     public void Player1Initialize()
     {
         _player1 = GameObject.FindGameObjectsWithTag("Player1");
         _p1Health = _totalHealth;
-        Debug.Log("Player 1 Health Initialized on " + _p1Health);
+        _p1HealthBar.value = _p1Health;
+        //Debug.Log("Player 1 Health Initialized on " + _p1Health);
     }
 
     public void Player2Initialize()
     {
         _player2 = GameObject.FindGameObjectsWithTag("Player2");
         _p2Health = _totalHealth;
-        Debug.Log("Player 2 Health Initialized on " + _p2Health);
+        _p2HealthBar.value = _p2Health;
+        //Debug.Log("Player 2 Health Initialized on " + _p2Health);
     }
 
     public void ApplyDamage(int IsPlayer, int DmgType)
@@ -57,13 +61,13 @@ public class HealthManager : MonoBehaviour
                     _p1Health -= BoomerangDMG;
                     _p1Health = Mathf.Clamp(_p1Health, 0, _totalHealth);
                     _p1HealthBar.value = _p1Health;
-                    if (_p1Health <= 0) Destroy(_player1[0]);
+                    if (_p1Health <= 0) P1LivesReduction();
                     break;
                 case "Collision":
                     _p1Health -= CollisionDMG;
                     _p1Health = Mathf.Clamp(_p1Health, 0, _totalHealth);
                     _p1HealthBar.value = _p1Health;
-                    if (_p1Health <= 0) Destroy(_player1[0]);
+                    
                     break;
             }
         }
@@ -86,5 +90,21 @@ public class HealthManager : MonoBehaviour
                     break;
             }
         }
+    }
+
+    public void P1LivesReduction()
+    {
+        if (_p1Lives >= 1)
+        {
+            Destroy(_player1[0]);
+            _p1Lives--;
+            //Añade aquí el llamado a la función de respawn
+        }
+        else
+        {
+            Destroy(_player1[0]);
+            //Añade aquí el paso a la pantalla de victoria.
+        }
+        
     }
 }

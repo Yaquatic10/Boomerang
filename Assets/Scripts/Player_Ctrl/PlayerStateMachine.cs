@@ -5,6 +5,7 @@ using System.Collections;
 public class PlayerStateMachine : MonoBehaviour
 {
     public HealthManager _healthManager;
+    private CtxDataBase _db;
     
     //Objetos para verificación de contacto con el suelo (ground).
     [Header("Ground Check")]
@@ -95,6 +96,7 @@ public class PlayerStateMachine : MonoBehaviour
     public PlayerStateFactory States { get { return _states; } set { _states = value; } }
 
     public HealthManager HealthManager {  get { return _healthManager; } set { _healthManager = value; } }
+    public CtxDataBase DB {  get { return _db; } set { _db = value; } }
 
     //GETTERS PARA CONTROLES DE ANIMACION.
     public int IsWalkingHash { get { return _isWalkingHash; } set { _isWalkingHash = value; } }
@@ -163,31 +165,14 @@ public class PlayerStateMachine : MonoBehaviour
         RbChar = GetComponent<Rigidbody2D>(); //Se reconoce el RigidBody 2D del personaje.
         AnimCtrl = GetComponent<Animator>();
         HealthManager = FindAnyObjectByType<HealthManager>();
+        DB = FindAnyObjectByType<CtxDataBase>();
         RbChar.sharedMaterial = FrictionlessMat;
         States = new PlayerStateFactory(this); //Se invoca la Fabrica de Estados.
         CurrentState = States.Airborne();
         CurrentState.EnterState(); //Se inicializa el estado de Airborne.
         SpeedBuffEnabled = false;
         CurrentGravityScale = GravityScale;
-        switch (_charIndex)
-        {
-            case (0):
-                {
-                    FrictionMat = FrictionA;
-                    break;
-                }
-            case (1):
-                {
-                    FrictionMat = FrictionB;
-                    break;
-                }
-            case (2):
-                {
-                    FrictionMat = FrictionC;
-                    break;
-                }
-        }
-
+        
         //Configuración de Animaciones.
         //IsWalkingHash = _animCtrl.StringToHash("isWalking");
 }
@@ -255,20 +240,53 @@ public class PlayerStateMachine : MonoBehaviour
             DmgType = 0;
             HealthManager.ApplyDamage(IsPlayer, DmgType);
         }
-
-
-        
     }
 
     public void SelfRecognitionAsP1()
     {
         IsPlayer = 1;
         Debug.Log("ERES PLAYER 1");
+        switch (DB.P1CharIndex)
+        {
+            case (0):
+                {
+                    FrictionMat = FrictionA;
+                    break;
+                }
+            case (1):
+                {
+                    FrictionMat = FrictionB;
+                    break;
+                }
+            case (2):
+                {
+                    FrictionMat = FrictionC;
+                    break;
+                }
+        }
     }
 
     public void SelfRecognitionAsP2()
     {
         IsPlayer = 2;
         Debug.Log("ERES PLAYER 2");
+        switch (DB.P2CharIndex)
+        {
+            case (0):
+                {
+                    FrictionMat = FrictionA;
+                    break;
+                }
+            case (1):
+                {
+                    FrictionMat = FrictionB;
+                    break;
+                }
+            case (2):
+                {
+                    FrictionMat = FrictionC;
+                    break;
+                }
+        }
     }
 }

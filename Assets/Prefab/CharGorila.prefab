@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 3958734003373211914}
   - component: {fileID: -7486146241599828967}
   m_Layer: 0
-  m_Name: NewPlayer
+  m_Name: CharGorila
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -122,7 +122,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8398936653445425544, guid: bfdd3a6c08d9c4c47966a151477910f6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.4117647, b: 0.7058824, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -261,6 +261,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: b9c777bb-85da-43b9-b146-579d8fa19d01
     m_ActionName: 'Gameplay/2kItem[/Keyboard/rightShift]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 01011ef7-c364-48d5-a8a4-8f1162f8a8fa
+    m_ActionName: 'UI/1PSelect[/Keyboard/space]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 356410ae-eeed-4ac1-9e24-9a74c765b92e
+    m_ActionName: 'UI/2PSelect[/Keyboard/shift]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 173ff130-e371-45c5-baf9-eaf7fb464253
+    m_ActionName: 'UI/1PMove[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: eddfdea0-f3d0-4bc6-aca0-124adf7f2c16
+    m_ActionName: 'UI/2PMove[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 1PKeyboard
   m_DefaultActionMap: Gameplay
@@ -278,7 +294,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.65
+  m_Mass: 0.75
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1

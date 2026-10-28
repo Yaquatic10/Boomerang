@@ -5,8 +5,8 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/OldScenes/MainMenu.unity
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
     guid: 3fc7a25bf817e9a46875c6e63caf548d
   - enabled: 0
     path: Assets/Scenes/OldScenes/Map selector.unity
@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestLevels/CharCtrl_Test.unity
     guid: 5ab207e91e44eee478a0828285974ea7
+  - enabled: 1
+    path: Assets/Scenes/CharSelection.unity
+    guid: c1b015d3581e8cb4180b7ef59bb347d2
   m_configObjects: {}
